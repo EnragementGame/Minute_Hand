@@ -10,9 +10,11 @@ func _process(delta: float) -> void:
 	if interactionRay.is_colliding():
 		if interactionRay.get_collider().has_node("Interactable"):
 			selectedInteractable = interactionRay.get_collider()
-			selectedInteractable.selected = true
+			print(selectedInteractable.name)
 		else:
 			selectedInteractable = null
+	else:
+		selectedInteractable = null
 	if Input.is_action_just_pressed("Interact") && selectedInteractable != null:
-		selectedInteractable.interacted()
+		selectedInteractable.get_node("Interactable").interacted()
 		print("worked")
