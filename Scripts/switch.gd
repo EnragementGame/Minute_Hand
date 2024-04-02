@@ -26,6 +26,7 @@ func _ready():
 
 	if onToStart:
 		active = true
+		
 		activeLenght.start(activeTimer)
 
 func _on_interactable_interaction_function() -> void:
