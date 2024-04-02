@@ -1,8 +1,8 @@
 extends Node3D
 
+##Activates an event tied to the object
 signal trigger_activate()
 
-##Activates an event tied to the object
 @export var requiredTriggers : int ##Can never be 0
 @export var maxActivations : int ##Can never be 0
 var triggers : int
