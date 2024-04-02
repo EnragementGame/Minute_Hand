@@ -1,15 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct8vjflglci3u"]
+[gd_scene load_steps=4 format=3 uid="uid://ct8vjflglci3u"]
 
 [ext_resource type="PackedScene" uid="uid://c1t12ojqg5umc" path="res://Scenes/player.tscn" id="1_dvmfx"]
-[ext_resource type="PackedScene" uid="uid://cwqhqxvl34rs5" path="res://Scenes/Components/trigger.tscn" id="2_dfv04"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gtf31"]
 size = Vector3(18.917, 1, 20.6699)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5tt6p"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_eq88i"]
-size = Vector3(6.21112, 5.71509, 6.84366)
 
 [node name="Testmap" type="Node3D"]
 
@@ -30,12 +26,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01381, 0.55539, 4.51491)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.282341, 0.959314, 0, -0.959314, 0.282341, -1.68634, 2.14708, -1.00734)
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4564, 1.33491, 0)
-
-[node name="Trigger" parent="Area3D" instance=ExtResource("2_dfv04")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60556, 1.72742, 2.92183)
-shape = SubResource("BoxShape3D_eq88i")

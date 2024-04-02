@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Minute Hand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
+
 [input]
 
 Forward={
