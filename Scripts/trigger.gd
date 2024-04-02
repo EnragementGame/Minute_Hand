@@ -8,21 +8,25 @@ signal trigger_activate()
 
 @export var triggerName : String
 @export_category("Paramiters")
-@export var areaTrigger : bool
 @export var interactableTriger : bool
 @export var requiredTriggers : int #Can never be 0
 @export var maxActivations : int #Set to -1 for infinite activations
+@export_category("Area Trigger")
+@export var isAreaTrigger : bool
+@export var areaSize : Vector3
+@onready var areaTrigger : BoxShape3D = %AreaTrigger.shape
 var triggers : int
 var activations : int
-var canTrigger : bool
+@onready var canTrigger : bool = true
 
 func _ready() -> void:
 	activations = 0
 	if requiredTriggers <= 0:
 		requiredTriggers = 1
-	if maxActivations == 0:
-		push_error(triggerName + " maxActivations set to 0, value should be either -1 or a positive intiger. Setting to 1.")
+	if maxActivations == 0 || maxActivations <= -2:
+		push_error(triggerName + " maxActivations set to invalid value, value should be either -1 or a positive intiger. Setting to 1.")
 		maxActivations = 1
+	areaTrigger.size = areaSize
 
 func _process(delta: float) -> void:
 	if triggers == requiredTriggers:
@@ -33,14 +37,19 @@ func _process(delta: float) -> void:
 	if activations == maxActivations:
 		canTrigger = false
 
-func _on_area_entered(area:Area3D) -> void:
-	if area != self || !canTrigger:
-		return
-	if areaTrigger:
-		triggers += 1
-
 func _on_interactable_interaction_function() -> void:
 	if !canTrigger:
 		return
 	if interactableTriger:
 		triggers += 1
+
+func _on_body_entered(body:Node3D) -> void:
+	if !canTrigger:
+		return
+	if isAreaTrigger:
+		triggers += 1
+		canTrigger = false
+
+func _on_body_exited(body:Node3D) -> void:
+	if !canTrigger && !activations == maxActivations:
+		canTrigger = true
