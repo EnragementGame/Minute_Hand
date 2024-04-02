@@ -2,6 +2,7 @@ extends Node3D
 
 signal switch_active()
 
+@export var switchName : String
 @export_category("Triggers")
 @export var linkedTriggers : Array[Node3D]
 @export_category("Conditions")
@@ -10,7 +11,7 @@ signal switch_active()
 @export var onToStart : bool
 @export_category("Timers")
 @export_range(0.2, 30) var activeTimer : float
-@export var delay : float ##Leave zero for no delay
+@export var delay : float #Leave zero for no delay
 @onready var activeLenght : Timer = %ActiveLength
 @onready var delayTimer : Timer = %ActivationDelay
 var active : bool
@@ -30,6 +31,9 @@ func _ready():
 		activeLenght.start(activeTimer)
 
 func _on_interactable_interaction_function() -> void:
+	if !isToggle && active:
+		return
+	
 	if canUse:
 		delayTimer.start(delay)
 
@@ -39,6 +43,8 @@ func _on_activation_delay_timeout() -> void:
 		return
 
 	active = true
+	for i in linkedTriggers:
+		i.triggers += 1
 	if !isToggle:
 		activeLenght.start(activeTimer)
 
