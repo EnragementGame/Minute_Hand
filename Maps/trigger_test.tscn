@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://ct8vjflglci3u"]
 
-[ext_resource type="PackedScene" uid="uid://c1t12ojqg5umc" path="res://Scenes/player.tscn" id="1_dvmfx"]
-[ext_resource type="Script" path="res://trigger_test.gd" id="2_awd2w"]
-[ext_resource type="PackedScene" uid="uid://cwqhqxvl34rs5" path="res://Scenes/Components/trigger.tscn" id="2_dfv04"]
-[ext_resource type="PackedScene" uid="uid://c3agxo7lalh3h" path="res://Scenes/Components/switch.tscn" id="4_57mr2"]
+[ext_resource type="PackedScene" uid="uid://c3agxo7lalh3h" path="res://Scenes/Components/switch.tscn" id="1_i3rav"]
+[ext_resource type="PackedScene" uid="uid://c1t12ojqg5umc" path="res://Scenes/player.tscn" id="2_rrgq5"]
+[ext_resource type="Script" path="res://trigger_test.gd" id="3_ngkyn"]
+[ext_resource type="PackedScene" uid="uid://cwqhqxvl34rs5" path="res://Scenes/Components/trigger.tscn" id="4_23mmm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u3b87"]
 
@@ -19,9 +19,9 @@ albedo_color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fuwrc"]
 
-[node name="Testmap" type="Node3D"]
+[node name="Triggertest" type="Node3D"]
 
-[node name="Switch" parent="." node_paths=PackedStringArray("linkedTriggers") instance=ExtResource("4_57mr2")]
+[node name="Switch" parent="." node_paths=PackedStringArray("linkedTriggers") instance=ExtResource("1_i3rav")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83523, 2.41693, 6.47926)
 switchName = "Light_Switch"
 linkedTriggers = [NodePath("../OmniLight3D/Blue_Trigger")]
@@ -49,7 +49,7 @@ mesh = SubResource("BoxMesh_5tt6p")
 skeleton = NodePath("../Ground_Collison")
 surface_material_override/0 = SubResource("StandardMaterial3D_qgu5a")
 
-[node name="Player" parent="." instance=ExtResource("1_dvmfx")]
+[node name="Player" parent="." instance=ExtResource("2_rrgq5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.451618, 0.55539, 4.97008)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -61,9 +61,13 @@ light_color = Color(0, 1, 0, 1)
 light_energy = 16.0
 light_indirect_energy = 7.435
 omni_range = 7.858
-script = ExtResource("2_awd2w")
+script = ExtResource("3_ngkyn")
 
-[node name="Light_Trigger" parent="OmniLight3D" instance=ExtResource("2_dfv04")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OmniLight3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5, -3, 5)
+mesh = SubResource("BoxMesh_fuwrc")
+
+[node name="Light_Trigger" parent="OmniLight3D" instance=ExtResource("4_23mmm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3, 5)
 triggerName = "Red"
 requiredTriggers = 1
@@ -71,12 +75,7 @@ maxActivations = -1
 isAreaTrigger = true
 areaSize = Vector3(5, 5, 5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="OmniLight3D/Light_Trigger"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("BoxMesh_fuwrc")
-skeleton = NodePath("../..")
-
-[node name="Blue_Trigger" parent="OmniLight3D" instance=ExtResource("2_dfv04")]
+[node name="Blue_Trigger" parent="OmniLight3D" instance=ExtResource("4_23mmm")]
 triggerName = "Blue"
 requiredTriggers = 1
 maxActivations = -1
