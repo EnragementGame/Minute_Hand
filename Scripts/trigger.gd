@@ -20,18 +20,20 @@ var activations : int
 
 func _ready() -> void:
 	activations = 0
+	areaTrigger.size = areaSize
 	if requiredTriggers <= 0:
 		requiredTriggers = 1
 	if maxActivations == 0 || maxActivations <= -2:
 		push_error(triggerName + " maxActivations set to invalid value, value should be either -1 or a positive intiger. Setting to 1.")
 		maxActivations = 1
-	areaTrigger.size = areaSize
+	
 
 func _process(delta: float) -> void:
 	if triggers == requiredTriggers:
 		activations += 1
 		trigger_activate.emit()
 		triggers = 0
+		print(triggerName + " has activated successfully")
 	
 	if activations == maxActivations:
 		canTrigger = false

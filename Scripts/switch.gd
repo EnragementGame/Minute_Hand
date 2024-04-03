@@ -62,6 +62,7 @@ func _on_activation_delay_timeout() -> void:
 func _on_active_length_timeout() -> void:
 	active = false
 	switch_deactivate.emit()
+	delayTimer.stop()
 	if singleUse:
 		canUse = false
 	else:

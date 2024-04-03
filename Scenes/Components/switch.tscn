@@ -11,6 +11,7 @@ collision_mask = 0
 script = ExtResource("1_fy8bg")
 switchName = "Default"
 activeTimer = 0.2
+delay = 0.01
 
 [node name="Interactable" parent="." instance=ExtResource("2_hsgjr")]
 
@@ -20,9 +21,11 @@ shape = SubResource("BoxShape3D_3vjvc")
 
 [node name="ActiveLength" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 
 [node name="ActivationDelay" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 
 [connection signal="interaction_function" from="Interactable" to="." method="_on_interactable_interaction_function"]
 [connection signal="timeout" from="ActiveLength" to="." method="_on_active_length_timeout"]
