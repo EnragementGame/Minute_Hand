@@ -8,7 +8,6 @@ signal trigger_activate()
 
 @export var triggerName : String
 @export_category("Paramiters")
-@export var interactableTriger : bool
 @export var requiredTriggers : int #Can never be 0
 @export var maxActivations : int #Set to -1 for infinite activations
 @export_category("Area Trigger")
@@ -36,12 +35,6 @@ func _process(delta: float) -> void:
 	
 	if activations == maxActivations:
 		canTrigger = false
-
-func _on_interactable_interaction_function() -> void:
-	if !canTrigger:
-		return
-	if interactableTriger:
-		triggers += 1
 
 func _on_body_entered(body:Node3D) -> void:
 	if !canTrigger:

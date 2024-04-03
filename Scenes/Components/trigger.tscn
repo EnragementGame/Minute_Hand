@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwqhqxvl34rs5"]
+[gd_scene load_steps=3 format=3 uid="uid://cwqhqxvl34rs5"]
 
 [ext_resource type="Script" path="res://Scripts/trigger.gd" id="1_36qsg"]
-[ext_resource type="PackedScene" uid="uid://dqa8gpir77yuu" path="res://Scenes/Components/interactable.tscn" id="2_44s71"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y4csu"]
 
@@ -14,9 +13,5 @@ triggerName = "Default"
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_y4csu")
 
-[node name="Interactable" parent="." instance=ExtResource("2_44s71")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0175533, -0.0298786, -0.00852269)
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="interaction_function" from="Interactable" to="." method="_on_interactable_interaction_function"]

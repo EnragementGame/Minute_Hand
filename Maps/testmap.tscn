@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct8vjflglci3u"]
+[gd_scene load_steps=11 format=3 uid="uid://ct8vjflglci3u"]
 
 [ext_resource type="PackedScene" uid="uid://c1t12ojqg5umc" path="res://Scenes/player.tscn" id="1_dvmfx"]
 [ext_resource type="Script" path="res://trigger_test.gd" id="2_awd2w"]
 [ext_resource type="PackedScene" uid="uid://cwqhqxvl34rs5" path="res://Scenes/Components/trigger.tscn" id="2_dfv04"]
+[ext_resource type="PackedScene" uid="uid://c3agxo7lalh3h" path="res://Scenes/Components/switch.tscn" id="4_57mr2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u3b87"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f18jn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gtf31"]
 size = Vector3(18.917, 1, 20.6699)
@@ -15,6 +20,21 @@ albedo_color = Color(0.164706, 0.164706, 0.164706, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_fuwrc"]
 
 [node name="Testmap" type="Node3D"]
+
+[node name="Switch" parent="." node_paths=PackedStringArray("linkedTriggers") instance=ExtResource("4_57mr2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83523, 2.41693, 6.47926)
+switchName = "Light_Switch"
+linkedTriggers = [NodePath("../OmniLight3D/Blue_Trigger")]
+activeTimer = 2.0
+switchSize = Vector3(1.15, 1.15, 1.15)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Switch"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Switch/StaticBody3D"]
+shape = SubResource("BoxShape3D_u3b87")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Switch"]
+mesh = SubResource("BoxMesh_f18jn")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 collision_layer = 2
@@ -45,14 +65,21 @@ script = ExtResource("2_awd2w")
 
 [node name="Light_Trigger" parent="OmniLight3D" instance=ExtResource("2_dfv04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -3, 5)
-interactableTriger = true
+triggerName = "Red"
 requiredTriggers = 1
 maxActivations = -1
 isAreaTrigger = true
 areaSize = Vector3(5, 5, 5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="OmniLight3D"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5, -3, 5)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OmniLight3D/Light_Trigger"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("BoxMesh_fuwrc")
+skeleton = NodePath("../..")
+
+[node name="Blue_Trigger" parent="OmniLight3D" instance=ExtResource("2_dfv04")]
+triggerName = "Blue"
+requiredTriggers = 1
+maxActivations = -1
 
 [connection signal="trigger_activate" from="OmniLight3D/Light_Trigger" to="OmniLight3D" method="_on_light_trigger_trigger_activate"]
+[connection signal="trigger_activate" from="OmniLight3D/Blue_Trigger" to="OmniLight3D" method="_on_blue_trigger_trigger_activate"]

@@ -18,6 +18,9 @@ var canLoseStamina : bool
 @onready var cam : Camera3D = %Cam
 var camLimit : float = 89
 
+func _ready() -> void:
+	lock_mouse()
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -53,6 +56,12 @@ func running() -> bool:
 		return true
 	else:
 		return false
+
+func lock_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func unlock_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_recovery_timer_timeout() -> void:
 	regenStamina = true
