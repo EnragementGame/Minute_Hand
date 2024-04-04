@@ -14,6 +14,10 @@ config/name="Minute Hand"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TrackedProgress="*res://Scripts/trackedprogress.gd"
+
 [display]
 
 window/size/viewport_width=1920
