@@ -1,0 +1,26 @@
+// Game: Minute_Hand
+// Format: Valve
+// entity 0
+{
+"mapversion" "220"
+"classname" "worldspawn"
+"_tb_textures" "Textures;Textures\placeholders;textures"
+// brush 0
+{
+( -240 344 16 ) ( -240 -368 16 ) ( -240 -368 0 ) placeholders/Placeholder_Dark_128 [ 0 1.0000000000000002 0 8 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -240 -368 16 ) ( 296 -376 16 ) ( 296 -376 0 ) placeholders/Placeholder_Dark_128 [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 296 -376 0 ) ( 296 336 0 ) ( -240 344 0 ) placeholders/Placeholder_Dark_128 [ -1 0 0 0 ] [ 0 -1 0 -8 ] 0 1 1
+( -240 344 16 ) ( 296 336 16 ) ( 296 -376 16 ) placeholders/Placeholder_Dark_128 [ 1 0 0 0 ] [ 0 -1 0 -8 ] 0 1 1
+( 296 336 0 ) ( 296 336 16 ) ( -240 344 16 ) placeholders/Placeholder_Dark_128 [ -1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 0 ] 0 1 1
+( 296 -376 16 ) ( 296 336 16 ) ( 296 336 0 ) placeholders/Placeholder_Dark_128 [ 0 1 0 8 ] [ 0 0 -1 0 ] 0 1 1
+}
+// brush 1
+{
+( -240 344 16 ) ( -240 -368 16 ) ( -240 -368 0 ) placeholders/Placeholder_Dark_128 [ 0 1.0000000000000002 0 8 ] [ 0 0 -1.0000000000000002 0 ] 0 1 1
+( -240 -368 16 ) ( 296 -376 16 ) ( 296 -376 0 ) placeholders/Placeholder_Dark_128 [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 296 -376 0 ) ( 296 336 0 ) ( -240 344 0 ) placeholders/Placeholder_Dark_128 [ -1 0 0 0 ] [ 0 -1 0 -8 ] 0 1 1
+( -240 344 16 ) ( 296 336 16 ) ( 296 -376 16 ) placeholders/Placeholder_Dark_128 [ 1 0 0 0 ] [ 0 -1 0 -8 ] 0 1 1
+( 296 336 0 ) ( 296 336 16 ) ( -240 344 16 ) placeholders/Placeholder_Dark_128 [ -1.0000000000000002 0 0 0 ] [ 0 0 1.0000000000000002 0 ] 0 1 1
+( 296 -376 16 ) ( 296 336 16 ) ( 296 336 0 ) placeholders/Placeholder_Dark_128 [ 0 1 0 8 ] [ 0 0 -1 0 ] 0 1 1
+}
+}

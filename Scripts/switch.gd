@@ -16,18 +16,19 @@ signal switch_deactivate()
 @export var delay : float #Leave zero for no delay
 @onready var activeLenght : Timer = %ActiveLength
 @onready var delayTimer : Timer = %ActivationDelay
-@export_category("Size")
-@export var switchSize : Vector3
-@onready var switchArea : BoxShape3D = %SwitchInteraction.shape
 var active : bool
 @onready var canUse : bool = true
 
 func _ready():
 	for i in linkedTriggers:
-		if !i.has_node("res://Scenes/Components/trigger.tscn"):
+		if i != get_node("res://Scenes/Components/trigger.tscn"):
 			push_error(switchName + " switch linked to object without trigger")
 	
-	switchArea.size = switchSize
+	if get_parent().has_node("Interactable"):
+		var interactableNode : Node3D = get_parent().get_node("Interactable")
+		interactableNode.interaction_function.connect(interactable_link)
+	else:
+		push_error(switchName + " is on an object without and Interactable component.")
 
 	if activeTimer < 0.2:
 		activeTimer = 0.2
@@ -38,7 +39,7 @@ func _ready():
 		activeLenght.start(activeTimer)
 		switch_active.emit()
 
-func _on_interactable_interaction_function() -> void:
+func interactable_link() -> void:
 	if canUse:
 		delayTimer.start(delay)
 		canUse = false
