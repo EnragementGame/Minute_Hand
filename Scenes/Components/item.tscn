@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://g2qplpn8klqi"]
+[gd_scene load_steps=2 format=3 uid="uid://g2qplpn8klqi"]
+
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_0j7po"]
 
 [node name="Item" type="Node3D"]
+script = ExtResource("1_0j7po")
+itemName = "Default"

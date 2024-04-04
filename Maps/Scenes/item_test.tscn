@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ciqcoik4bihx4"]
+[gd_scene load_steps=11 format=3 uid="uid://ciqcoik4bihx4"]
 
 [ext_resource type="PackedScene" uid="uid://c1t12ojqg5umc" path="res://Scenes/player.tscn" id="1_a6gd3"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="2_wr8t4"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="3_wqnrl"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_entity.gd" id="4_rps6r"]
 [ext_resource type="Texture2D" uid="uid://bitarc525pu5w" path="res://Maps/Textures/placeholders/Placeholder_Dark_128.png" id="5_g2vey"]
+[ext_resource type="PackedScene" uid="uid://b4xrtmf26w5ev" path="res://Scenes/Items/test_collectable.tscn" id="6_nfpcu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jojlg"]
 
@@ -62,3 +63,6 @@ mesh = SubResource("ArrayMesh_lgu1m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="QodotMap/entity_0_worldspawn/entity_0_mesh_instance/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xxqb6")
+
+[node name="test_collectable" parent="." instance=ExtResource("6_nfpcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421558, 0.5, -0.625847)

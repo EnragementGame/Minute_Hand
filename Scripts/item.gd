@@ -5,8 +5,8 @@ extends Node3D
 @export var linkedTriggers : Array[Node3D]
 @export_category("Conditions")
 @export var destroyAfterPickup : bool
+@onready var pickedUp : bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if get_parent().has_node("Interactable"):
 		var interactableNode : Node3D = get_parent().get_node("Interactable")
@@ -14,7 +14,6 @@ func _ready() -> void:
 	else:
 		push_error(itemName + " is on an object without and Interactable component.")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 

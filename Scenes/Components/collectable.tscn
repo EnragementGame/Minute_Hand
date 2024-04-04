@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://c5m2yfr0321xa"]
+[gd_scene load_steps=2 format=3 uid="uid://c5m2yfr0321xa"]
+
+[ext_resource type="Script" path="res://Scripts/collectable.gd" id="1_g30jk"]
 
 [node name="Collectable" type="Node3D"]
+script = ExtResource("1_g30jk")
