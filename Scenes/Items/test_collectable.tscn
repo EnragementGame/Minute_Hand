@@ -10,17 +10,19 @@ size = Vector3(0.242188, 0.461548, 0.242188)
 
 [node name="test_collectable" instance=ExtResource("1_64mvi")]
 
-[node name="Interactable" parent="." index="0" instance=ExtResource("4_i04uu")]
-canHighlight = true
-
-[node name="Item" parent="." index="1" instance=ExtResource("2_kh1vd")]
-itemName = "test_collectable"
-destroyAfterPickup = true
-
-[node name="Collectable" parent="." index="2" instance=ExtResource("3_od7gr")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+collision_layer = 6
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226624, 0)
 shape = SubResource("BoxShape3D_ue0vc")
+
+[node name="Collectable" parent="StaticBody3D" index="1" instance=ExtResource("3_od7gr")]
+
+[node name="Interactable" parent="StaticBody3D" index="2" instance=ExtResource("4_i04uu")]
+canHighlight = true
+
+[node name="Item" parent="StaticBody3D" index="3" instance=ExtResource("2_kh1vd")]
+itemName = "test_collectable"
+destroyAfterPickup = true

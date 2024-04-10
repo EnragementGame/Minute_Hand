@@ -3,6 +3,7 @@ extends Node3D
 var selectedInteractable : Node3D
 @onready var interactionRay : RayCast3D = %InteractionCheck
 @onready var interactionIndicator : Control = %InteractionIndicator
+var inspectionState : bool = false
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -20,5 +21,5 @@ func _process(delta: float) -> void:
 		selectedInteractable = null
 		interactionIndicator.visible = false
 	if Input.is_action_just_pressed("Interact") && selectedInteractable != null:
-		selectedInteractable.get_node("Interactable").interacted()
+		selectedInteractable.get_node("Interactable").interacted(self)
 		print("worked")
