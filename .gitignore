@@ -1,5 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
-C:\Users\enrag\Desktop\Game Dev Stuff\Github\Minute_Hand/Assets/
-C:\Users\enrag\Desktop\Game Dev Stuff\Github\Minute_Hand/Maps/
-C:\Users\enrag\Desktop\Game Dev Stuff\Github\Minute_Hand/Scenes/
+Assets/
+Maps/
+Scenes/
